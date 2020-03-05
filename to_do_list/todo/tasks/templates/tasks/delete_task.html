@@ -12,11 +12,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
-<p> Are you sure you want to delete "{{ item }}" item?</p>
-<a href = "{% url 'home' %}">Cancel</a>
-<form method="POST" action="">
+
+<div class="container">
+    <div class = "outPopUp">
+        <br>
+<h3 style="text-align: center;"> Are you sure you want to delete "{{ item }}" item?</h3>
+<form method="POST" action="{% url 'index' customer_id %}" class = "form-row">
     {% csrf_token %}
-    <input type="submit">
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    <a class="btn btn-primary"role="button" href = "{% url 'index' customer_id %}">Cancel</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class="btn btn-primary" type="submit" value="Confirm">
 </form>
+</div>
+</div>
 </body>
 </html>

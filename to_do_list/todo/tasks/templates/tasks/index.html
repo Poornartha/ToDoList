@@ -51,8 +51,8 @@
                 {% endif %}
             </div>
             <div class="float-right">
-                <a class="btn btn-primary"role="button" href = "{% url 'update_task' task.id %}">Update</a>
-                <a class="btn btn-primary"role="button" href = "{% url 'update_task' task.id %}">Delete</a>
+                <a class="btn btn-primary"role="button" href = "{% url 'update_task' customer_id task.id %}">Update</a>
+                <a class="btn btn-primary"role="button" href = "{% url 'delete_task' customer_id task.id %}">Delete</a>
             </div>
             <br>
         {% endfor %}
