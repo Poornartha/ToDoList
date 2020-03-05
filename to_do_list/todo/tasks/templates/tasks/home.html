@@ -1,0 +1,10 @@
+{% extends 'tasks\base.html' %}
+
+{% block content %}
+<h3 style="text-align: center;">LOGIN FORM</h3>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form }}
+        <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+{% endblock %}
