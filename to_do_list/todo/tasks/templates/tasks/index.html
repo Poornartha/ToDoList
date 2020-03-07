@@ -32,7 +32,7 @@
     <br>
     <h3 style = "text-align: center;">To Do List</h3>
     <br>
-    <form method="POST" action="/" class="form-inline">
+    <form method="POST" action="" class="form-inline">
         <div class="form-group col-lg-10">
             {% csrf_token %}
             &nbsp;&nbsp;<h5>To Do Entry :</h5> &nbsp;&nbsp;{{ form.title }} &nbsp;&nbsp;
@@ -41,21 +41,23 @@
     </form>
     <br>
     <ul class = "list-group col-lg-12" id = "content">
-        {% for task in task_list %}
-        <li class="list-group-item">
-            <div class="float-left">
-                {% if task.complete == True %}
-                <div class = "inactive">{{ task.title }}</div>
-                {% else %}
-                    <span>{{ task.title }}</span>
-                {% endif %}
-            </div>
-            <div class="float-right">
-                <a class="btn btn-primary"role="button" href = "{% url 'update_task' customer_id task.id %}">Update</a>
-                <a class="btn btn-primary"role="button" href = "{% url 'delete_task' customer_id task.id %}">Delete</a>
-            </div>
-            <br>
-        {% endfor %}
+        {% if task_list %}
+            {% for task in task_list %}
+            <li class="list-group-item">
+                <div class="float-left">
+                    {% if task.complete == True %}
+                    <div class = "inactive">{{ task.title }}</div>
+                    {% else %}
+                        <span>{{ task.title }}</span>
+                    {% endif %}
+                </div>
+                <div class="float-right">
+                    <a class="btn btn-primary"role="button" href = "{% url 'update_task' customer_id task.id %}">Update</a>
+                    <a class="btn btn-primary"role="button" href = "{% url 'delete_task' customer_id task.id %}">Delete</a>
+                </div>
+                <br>
+            {% endfor %}
+        {% endif %}
         </li>
     </ul>
     <br>

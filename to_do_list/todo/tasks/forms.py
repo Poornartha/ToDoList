@@ -25,3 +25,9 @@ class NewForm(forms.ModelForm):
         }
 
 
+class Delete(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        fields = ['title', 'complete']
+

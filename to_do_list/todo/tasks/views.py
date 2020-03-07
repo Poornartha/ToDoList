@@ -13,10 +13,8 @@ def index(request, pk):
     if request.method == "POST":
         form = NewForm(request.POST)
         if form.is_valid():
-            title = form.post.get('title')
-            completed = False
-            customer.Task.objects.create(title, completed)
-        return redirect('index')
+            form.save()
+        return redirect('index', pk)
 
     context = {
         'task_list': task_list,
@@ -45,17 +43,10 @@ def update_task(request, cpk, tpk):
 
 def delete_task(request, cpk, tpk):
     customer = Consumer.objects.get(id=cpk)
-    task = customer.task_set.all().get(id=tpk)
-    context = {
-        'item': task,
-        'customer_id': cpk,
-    }
-
-    if request.method == "POST":
-        customer.task_set.all().get(id=tpk).delete()
-        return redirect('index', cpk)
-
-    return render(request, 'tasks/delete_task.html', context)
+    task = customer.task_set.get(id=tpk)
+    print(task)
+    task.delete()
+    return redirect('index', cpk)
 
 
 def home_page(request):
