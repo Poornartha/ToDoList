@@ -2,10 +2,10 @@ from django import forms
 from django.forms import ModelForm
 
 from .models import *
+from .models import Consumer
 
 
 class NewCustomer(forms.ModelForm):
-
     class Meta:
         model = Consumer
         fields = "__all__"
@@ -16,7 +16,6 @@ class NewCustomer(forms.ModelForm):
 
 
 class NewForm(forms.ModelForm):
-
     class Meta:
         model = Task
         fields = ['title', 'complete']
@@ -24,9 +23,7 @@ class NewForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control col-lg-9'}),
         }
 
-
 class Delete(forms.ModelForm):
-
     class Meta:
         model = Task
         fields = ['title', 'complete']

@@ -13,7 +13,8 @@ def index(request, pk):
     if request.method == "POST":
         form = NewForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save()
+            customer.task_set.add(task)
         return redirect('index', pk)
 
     context = {
@@ -62,25 +63,16 @@ def home_page(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             password = form.cleaned_data['password']
-            try:
-                customer = Consumer.objects.get(name=name)
-                if customer.password == password:
-                    context = {
-                        'task_list': customer.task_set.all(),
-                        'customer_id': customer.pk,
-                        'form': form,
-                    }
-                    return redirect('index', customer.pk)
-                else:
-                    return redirect('home')
-            except:
+            customer = Consumer.objects.get(name=name)
+            if customer.password == password:
+                return redirect('index', customer.pk)
+            else:
                 return redirect('home')
     return render(request, 'tasks/home.html', context)
 
 
 def signup_page(request):
     form = NewCustomer()
-
     if request.method == "POST":
         form = NewCustomer(request.POST)
         if form.is_valid():
