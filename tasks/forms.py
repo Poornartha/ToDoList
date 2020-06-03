@@ -23,6 +23,7 @@ class NewForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control col-lg-9'}),
         }
 
+
 class Delete(forms.ModelForm):
     class Meta:
         model = Task
